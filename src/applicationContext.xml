@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+
+	<!-- 2、设置数据源，C3P0默认数据源 -->
+	<bean id="C3P0DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"/>
+		<property name="user" value="root"/>
+		<property name="password" value="gao527950554"/>
+	</bean>
+	
+	<!-- 3、将hibernate的sessionFactory交给spring管理 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="C3P0DataSource"/>
+		<property name="mappingDirectoryLocations" value="classpath:my/lotu/bean"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.current_session_context_class">
+				org.springframework.orm.hibernate5.SpringSessionContext</prop>
+			</props>
+		</property>
+	</bean>
+	<!--注册dao和service  -->
+	<!-- <bean id="BasicDao" class="my.lotu.dao.BasicDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean> -->
+	<bean id="Food" class="my.lotu.bean.Food"></bean>
+	<bean id="FoodDao" class="my.lotu.dao.FoodDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="FoodService" class="my.lotu.service.FoodService">
+		<property name="foodDao" ref="FoodDao"></property>
+	</bean>
+	
+	<!--接入struts  -->
+	<!--将Action交给Spring管理  -->
+	<bean id="addFoodAction" class="my.lotu.action.FoodAction" scope="prototype">
+		<property name="food" ref="Food"></property>
+		<property name="foodService" ref="FoodService"></property>
+	</bean>
+	
+	<!--配置事务管理器  注解方式-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 5、配置事务管理器 -->
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="C3P0DataSource"/>
+	</bean> -->
+	
+	<!-- 6、配置事务通知，指定应用事务的方法，以及这些方法的事务特性 -->
+	<tx:advice id="advice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="find*" propagation="SUPPORTS"  read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 7、利用aspectj讲事务通知织入到对应的方法上 -->
+	<!-- <aop:config>
+		<aop:pointcut expression="execution(* *..*Service*.*(..))" id="pc1"/>
+		<aop:advisor advice-ref="advice" pointcut-ref="pc1"/>
+	</aop:config> -->
+		
+
+	
+</beans>
+	
+	
+	

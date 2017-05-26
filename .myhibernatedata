@@ -1,0 +1,21 @@
+#MyEclipse Hibernate Properties
+#Tue May 23 16:53:48 CST 2017
+genBasicCompId=true
+sessionFactoryName=my.lotu.util.SessionFactory
+profile=
+daoSFId=
+jndiPath=
+detectM2M=true
+reStrategyClass=
+detectO2O=true
+springDaoFile=
+useJavaTypes=true
+keyGenerator=native
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/MealsPlan/src/hibernate.cfg.xml
+createConfigFile=true
+baseDaoClass=my.lotu.dao.BasicDao
