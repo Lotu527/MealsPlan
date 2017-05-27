@@ -1,4 +1,4 @@
-package my.lotu.dao;
+package my.lotu.bean;
 
 import java.util.List;
 
@@ -6,7 +6,6 @@ import my.lotu.bean.Food;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +21,7 @@ import org.slf4j.LoggerFactory;
  * @see my.lotu.bean.Food
  * @author MyEclipse Persistence Tools
  */
-@SuppressWarnings("deprecation")
-public class FoodDAO extends BasicDao{
+public class FoodDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(FoodDAO.class);
 	// property constants
 	public static final String NAME = "name";
@@ -37,10 +35,6 @@ public class FoodDAO extends BasicDao{
 	public static final String CALORIE = "calorie";
 	public static final String MASS = "mass";
 
-	private Session getSession() {
-		return getSessionFactory().getCurrentSession();
-	}
-	
 	public void save(Food transientInstance) {
 		log.debug("saving Food instance");
 		try {
@@ -51,8 +45,6 @@ public class FoodDAO extends BasicDao{
 			throw re;
 		}
 	}
-
-	
 
 	public void delete(Food persistentInstance) {
 		log.debug("deleting Food instance");

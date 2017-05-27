@@ -4,17 +4,19 @@ package my.lotu.bean;
  * Food entity. @author MyEclipse Persistence Tools
  */
 
-public class Food{
+
+public class Food {
 
 	// Fields
 
-	private Integer id;
+	private Long id;
 	private String name;
 	private String type1;
 	private String type2;
+	private String picture;
 	private Double price;
 	private Double protein;
-	private Double carbohydrate;
+	private Double carbohydra;
 	private Double fat;
 	private Double calorie;
 	private Double mass;
@@ -23,32 +25,36 @@ public class Food{
 
 	/** default constructor */
 	public Food() {
-		super();
 	}
 
 	/** full constructor */
-	public Food(String name, String type1, String type2, Double price,
-			Double protein, Double carbohydrate, Double fat, Double calorie,
-			Double mass) {
-		super();
+	public Food(String name, String type1, String type2, String picture,
+			Double price, Double protein, Double carbohydra, Double fat,
+			Double calorie, Double mass) {
 		this.name = name;
 		this.type1 = type1;
 		this.type2 = type2;
+		this.picture = picture;
 		this.price = price;
 		this.protein = protein;
-		this.carbohydrate = carbohydrate;
+		this.carbohydra = carbohydra;
 		this.fat = fat;
 		this.calorie = calorie;
 		this.mass = mass;
 	}
 
+	@Override
+	public String toString(){
+		return "Food:{id="+id+",name="+name+",type1="+type1+",type2="+type2+",picture="+picture+
+				",price="+price+",protein="+protein+",carbohydrate="+carbohydra+",fat="+fat+",calorie="+calorie+",mass="+mass+"}";
+	}
 	// Property accessors
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -76,6 +82,14 @@ public class Food{
 		this.type2 = type2;
 	}
 
+	public String getPicture() {
+		return this.picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 	public Double getPrice() {
 		return this.price;
 	}
@@ -92,12 +106,12 @@ public class Food{
 		this.protein = protein;
 	}
 
-	public Double getCarbohydrate() {
-		return this.carbohydrate;
+	public Double getCarbohydra() {
+		return this.carbohydra;
 	}
 
-	public void setCarbohydrate(Double carbohydrate) {
-		this.carbohydrate = carbohydrate;
+	public void setCarbohydra(Double carbohydra) {
+		this.carbohydra = carbohydra;
 	}
 
 	public Double getFat() {
