@@ -26,7 +26,8 @@ public class SpringHibernateTest {
 		List<Food> list=service.findAllFood();
 		
 		for(Iterator<Food> iterator=list.iterator();iterator.hasNext();){
-			System.out.println(iterator.toString());
+			System.out.println(iterator.next());
+			
 		}
 	}
 }
