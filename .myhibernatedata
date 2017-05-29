@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Sat May 27 15:41:22 CST 2017
+#Mon May 29 19:20:57 CST 2017
 genBasicCompId=true
 sessionFactoryName=my.lotu.util.SessionFactory
 profile=
@@ -18,4 +18,4 @@ genAnnotations=false
 reSettingsFile=
 configFile=/MealsPlan/src/hibernate.cfg.xml
 createConfigFile=true
-baseDaoClass=BaseHibernateDAO
+baseDaoClass=my.lotu.bean.BaseHibernateDAO

@@ -26,21 +26,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     This is my JSP page. <br>
     <table>
    <tr>
+   	<td>
+     食品编号
+    </td>
     <td>
      食品名称
+    </td>    
+    <td>
+     食品类别1
     </td>
     <td>
-     食品价格
+     食品类别2
     </td>
     <td>
-     食品图片
+     食品价格（元）
+    </td>
+    <td>
+     食品质量（克）
+    </td>
+    <td>
+     食品能量（大卡）
+    </td>
+    <td>
+     蛋白质含量（克）
+    </td>
+     <td>
+     碳水化合物含量（克）
+    </td> 
+    <td>
+     脂肪含量（克）
+    </td>
+    <td>
+     食物图片
     </td>
    </tr>
    <s:iterator value="foodList" var="food">
   <tr>
+  <td><s:property value="id"/></td>
   <td><s:property value="name"/></td>
+  <td><s:property value="type1"/></td>
+  <td><s:property value="type2"/></td>
   <td><s:property value="price"/></td>
-  <td><img src="img/<s:property value="picture"/>"></td>
+  <td><s:property value="mass"/></td>
+  <td><s:property value="calorie"/></td>
+  <td><s:property value="protein"/></td>
+  <td><s:property value="carbohydra"/></td>
+  <td><s:property value="fat"/></td>
+  <td><img alt="<s:property value="name"/>" src="img/<s:property value="picture"/>"></td>
   </tr>
   </s:iterator> 
 </table>

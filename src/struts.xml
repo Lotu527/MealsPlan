@@ -3,9 +3,18 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
 	"http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<package name="struts2" extends="struts-default">
+	<package name="struts2" namespace="/" extends="struts-default">
 		<action name="searchFood" class="searchFoodAction">
 			<result>/searchFood.jsp</result>
+		</action>
+		<action name="getPlan" class="getPlanAction">
+			<result>/getPlan.jsp</result>
+		</action>
+		<action name="userLogin" class="userLoginAction">
+			<result>/userLo‌gin.jsp</result>
+		</action>
+		<action name="userRegister" class="userRegisterAction">
+			<result>/userRegister.jsp</result>
 		</action>
 	</package>
 </struts>    

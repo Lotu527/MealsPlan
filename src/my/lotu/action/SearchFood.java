@@ -14,6 +14,17 @@ public class SearchFood extends ActionSupport {
 	private FoodService foodService;
 	private List<Food> foodList;
 	
+	@Override
+	public String execute(){
+		foodList=foodService.findFoodByExample(food);
+		for(Iterator<Food> iterator=foodList.iterator();iterator.hasNext();){
+			System.out.println(iterator.next());
+			
+		}
+		return SUCCESS;
+	}
+
+	
 	public FoodService getFoodService() {
 		return foodService;
 	}
@@ -33,22 +44,9 @@ public class SearchFood extends ActionSupport {
 		this.food = food;
 	}
 
-
-	@Override
-	public String execute(){
-		foodList=foodService.findFoodByExample(food);
-		for(Iterator<Food> iterator=foodList.iterator();iterator.hasNext();){
-			System.out.println(iterator.next());
-			
-		}
-		return SUCCESS;
-	}
-
-
 	public List<Food> getFoodList() {
 		return foodList;
 	}
-
 
 	public void setFoodList(List<Food> foodList) {
 		this.foodList = foodList;

@@ -40,15 +40,29 @@
 		</property>
 	</bean>
 	<!--注册dao和service  -->
-	<!-- <bean id="BasicDao" class="my.lotu.dao.BasicDao">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean> -->
+	<!--实体  -->
 	<bean id="Food" class="my.lotu.bean.Food"></bean>
+	<bean id="Plan" class="my.lotu.bean.Plan"></bean>
+	<bean id="User" class="my.lotu.bean.User"></bean>
+	<!--Dao  -->
 	<bean id="FoodDao" class="my.lotu.dao.FoodDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="PlanDao" class="my.lotu.dao.PlanDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="UserDao" class="my.lotu.dao.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--服务  --> 
 	<bean id="FoodService" class="my.lotu.service.FoodService">
 		<property name="foodDao" ref="FoodDao"></property>
+	</bean>
+	<bean id="PlanService" class="my.lotu.service.PlanService">
+		<property name="planDao" ref="PlanDao"></property>
+	</bean>
+	<bean id="UserService" class="my.lotu.service.UserService">
+		<property name="userDao" ref="UserDao"></property>
 	</bean>
 	
 	<!--接入struts  -->
@@ -56,6 +70,18 @@
 	<bean id="searchFoodAction" class="my.lotu.action.SearchFood" scope="prototype">
 		<property name="food" ref="Food"></property>
 		<property name="foodService" ref="FoodService"></property>
+	</bean>
+	<bean id="getPlanAction" class="my.lotu.action.GetPlan" scope="prototype">
+		<property name="plan" ref="Plan"></property>
+		<property name="planService" ref="PlanService"></property>
+	</bean>
+	<bean id="userLoginAction" class="my.lotu.action.UserLogin" scope="prototype">
+		<property name="user" ref="User"></property>
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="userRegisterAction" class="my.lotu.action.UserRegister" scope="prototype">
+		<property name="user" ref="User"></property>
+		<property name="userService" ref="UserService"></property>
 	</bean>
 	<!--配置事务管理器  注解方式-->
 	<bean id="transactionManager"

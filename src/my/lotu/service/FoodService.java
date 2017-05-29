@@ -9,7 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Example;
 import org.springframework.transaction.annotation.Transactional;
 @Transactional
-public class FoodService {
+public class FoodService implements IFoodService{
 	private FoodDAO foodDao;
 
 	public void setFoodDao(FoodDAO foodDao) {
