@@ -6,7 +6,6 @@
 <s:form action="searchFood">
 
 <s:label>食物价格：</s:label><input type="text" name="food.price"><br>
-<s:label>食物类别：</s:label><input type="text" name="food.type1"><br>
 <s:submit value="search"></s:submit>
 </s:form>
 </body>

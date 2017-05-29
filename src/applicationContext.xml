@@ -63,24 +63,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
-	<!-- 5、配置事务管理器 -->
-	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="C3P0DataSource"/>
-	</bean> -->
-	
-	<!-- 6、配置事务通知，指定应用事务的方法，以及这些方法的事务特性 -->
+	<!-- 配置事务通知，指定应用事务的方法，以及这些方法的事务特性 -->
 	<tx:advice id="advice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="*" propagation="REQUIRED"/>
 			<tx:method name="find*" propagation="SUPPORTS"  read-only="true"/>
 		</tx:attributes>
 	</tx:advice>
-	<!-- 7、利用aspectj讲事务通知织入到对应的方法上 -->
-	<!-- <aop:config>
-		<aop:pointcut expression="execution(* *..*Service*.*(..))" id="pc1"/>
-		<aop:advisor advice-ref="advice" pointcut-ref="pc1"/>
-	</aop:config> -->
 </beans>
 	
 	
