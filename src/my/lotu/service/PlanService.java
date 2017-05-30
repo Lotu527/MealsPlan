@@ -1,5 +1,6 @@
 package my.lotu.service;
 
+import my.lotu.bean.Plan;
 import my.lotu.dao.PlanDAO;
 
 public class PlanService {
@@ -11,5 +12,8 @@ public class PlanService {
 
 	public void setPlanDao(PlanDAO planDao) {
 		this.planDao = planDao;
+	}
+	public Plan getPlan(Plan plan){
+		return plan;
 	}
 }

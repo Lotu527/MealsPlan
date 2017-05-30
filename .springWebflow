@@ -3,5 +3,10 @@
 	<version>1</version>
 	<pluginVersion><![CDATA[3.5.1.201404300732-RELEASE]]></pluginVersion>
 	<configs>
+		<config>
+			<file>src/my/lotu/util/flow.xml</file>
+			<name><![CDATA[flow]]></name>
+			<beans-config><![CDATA[1:BeansModel|2:MealsPlan|3:src/applicationContext.xml]]></beans-config>
+		</config>
 	</configs>
 </webflow-project-description>

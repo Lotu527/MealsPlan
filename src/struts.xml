@@ -5,16 +5,17 @@
 <struts>
 	<package name="struts2" namespace="/" extends="struts-default">
 		<action name="searchFood" class="searchFoodAction">
-			<result>/searchFood.jsp</result>
+			<result name="success">/searchFood.jsp</result>
 		</action>
 		<action name="getPlan" class="getPlanAction">
-			<result>/getPlan.jsp</result>
+			<result name="success">/getPlan.jsp</result>
 		</action>
 		<action name="userLogin" class="userLoginAction">
-			<result>/userLo‌gin.jsp</result>
+			<result name="success">/userLo‌gin.jsp</result>
+			<result name="error">/index.jsp</result>
 		</action>
 		<action name="userRegister" class="userRegisterAction">
-			<result>/userRegister.jsp</result>
+			<result name="success">/userRegister.jsp</result>
 		</action>
 	</package>
 </struts>    

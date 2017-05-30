@@ -10,6 +10,12 @@
 
 <s:form action="getPlan">
 <s:label>规划资金：</s:label><input type="text" name="plan.price"><br>
+<s:label>规划周期：</s:label><select name="plan.type">
+								<option value="1">日</option>
+								<option value="2">周</option>
+								<option value="3">月</option>
+							</select><br>
+<s:label>规划时间：</s:label><input type="text" name="plan.time"><br>
 <s:submit value="获取计划"></s:submit>
 </s:form>
 

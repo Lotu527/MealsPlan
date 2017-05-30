@@ -29,7 +29,7 @@ public class GetPlan extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		
+		System.out.printf("Plan:{id=%d,name=%s,type=%s,dayPlanId=%s,price=%d,score=%d,time=%d}",plan.getId(),plan.getName(),plan.getDayPlanId(),plan.getPrice(),plan.getScore(),plan.getTime());
 		return SUCCESS;
 	}
 }
